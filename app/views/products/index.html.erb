@@ -2,7 +2,7 @@
 <h1>All Available Products</h1>
 <br>
 <% @all_products.each do |product| %>
-  <img src="<%= product.image %>"><br>
+  <img src="<%= product.image %>" width = 200><br>
   <h1><a href= "/products/<%= product.id %>"><%= product.name %></a></h1><br>
   <p>Price: $<%= product.price %></p><br>
   <p>Description: <%= product.description %></p><br>
