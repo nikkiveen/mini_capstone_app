@@ -1,10 +1,8 @@
 <h1>All Available Products</h1>
 <br>
 <% @all_products.each do |product| %>
-  <h2><%= product.name %></h2><br>
   <img src="<%= product.image %>"><br>
-  <h3><%= product.description %></h3><br>
-  <h3>$<%= product.price %></h3><br>
-  <a href= "/products/<%= product.id %>">Go To Product Page</a> 
-  <br>
+  <h1><a href= "/products/<%= product.id %>"><%= product.name %></a></h1><br>
+  <p>Price: $<%= product.price %></p><br>
+  <p>Description: <%= product.description %></p><br>
 <% end %>
