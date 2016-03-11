@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
       price: params[:price],
       image: params[:image]
     )
-    
+
     render 'create.html.erb'
   end
 
@@ -23,5 +23,11 @@ class ProductsController < ApplicationController
     product_id = params[:id]
     @product = Product.find_by(id: product_id)
     render 'show.html.erb'
+  end
+
+  def edit
+    product_id = params[:id]
+    @product = Product.find_by(id: product_id)
+    render 'edit.html.erb'
   end
 end
