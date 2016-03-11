@@ -9,7 +9,14 @@ class ProductsController < ApplicationController
   end
 
   def create
-    render 'index.html.erb'
+    Product.create(
+      name: params[:name],
+      description: params[:description],
+      price: params[:price],
+      image: params[:image]
+    )
+    
+    render 'create.html.erb'
   end
 
   def show
