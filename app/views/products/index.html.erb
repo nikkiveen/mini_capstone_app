@@ -1,9 +1,16 @@
 <a href= "/products/new">Add A New Product</a>
 <h1>All Available Products</h1>
 <br>
-<% @all_products.each do |product| %>
-  <img src="<%= product.image %>" width = 200><br>
-  <h1><a href= "/products/<%= product.id %>"><%= product.name %></a></h1><br>
-  <p>Price: $<%= product.price %></p><br>
-  <p>Description: <%= product.description %></p><br>
-<% end %>
+<div class="row">
+  <% @all_products.each do |product| %>
+    <div class="col-md-3">
+      <div class="products_well">
+        <img src="<%= product.image %>" width=100%>
+        <h1><a href= "/products/<%= product.id %>"><%= product.name %></a></h1>
+        <p>Price: $<%= product.price %></p>
+        <p><%= product.sale_message %>
+        <p>Description: <%= product.description %></p><br>
+      </div>
+    </div>
+  <% end %>
+</div>

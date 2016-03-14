@@ -1,7 +1,9 @@
 <a href= "/products">Return to All Products Page</a><br>
-<img src="<%= @product.image %>"><br>
-<h1><%= @product.name %></h1><br>
-<p><%= @product.description %></p><br>
-<p>$<%= @product.price %></p><br>
+<img src="<%= @product.image %>" width=300><br>
+<h1><%= @product.name %></h1>
+<p><%= @product.description %></p>
+<p>Price: $<%= @product.price %></p>
+<p>Sales Tax: $<%= @product.tax %></p>
+<p>Total: $<%= @product.total %></p>
 <a href = "/products/<%= @product.id %>/edit">Edit This Product</a><br>
 <%= link_to "Delete This Product", "/products/#{@product.id}", method: :delete %>
