@@ -1,22 +1,22 @@
 <h1>Edit Product</h1>
 <%= form_tag "/products/#{@product.id}", method: :patch do%>
-  <div>
+  <div class="form-group">
     <%= label_tag :name %>
-    <%= text_field_tag :name, @product.name %>
+    <%= text_field_tag :name, @product.name, :class => "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag :description %>
-    <%= text_field_tag :description, @product.description %>
+    <%= text_field_tag :description, @product.description, :class => "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag :price, "Price: $"%>
-    <%= text_field_tag :price, @product.price %>
+    <%= text_field_tag :price, @product.price, :class => "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag :image, "Image URL" %>
-    <%= text_field_tag :image, @product.image %>
+    <%= text_field_tag :image, @product.image, :class => "form-control" %>
   </div>
-  <div> 
-    <%= submit_tag "Submit Changes" %>
+  <div class="form-group"> 
+    <%= submit_tag "Submit Changes", :class => "btn btn-defaul" %>
   </div>
 <% end %>
