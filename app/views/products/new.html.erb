@@ -1,20 +1,20 @@
 <h1>Add New Product</h1>
 <%= form_tag "/products", method: :post do%>
-  <div>
+  <div class="form-group">
     <%= label_tag :name %>
-    <%= text_field_tag :name %>
+    <%= text_field_tag :name class = "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag :description %>
-    <%= text_field_tag :description %>
+    <%= text_field_tag :description class = "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag :price, "Price: $"%>
-    <%= text_field_tag :price %>
+    <%= text_field_tag :price class = "form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= label_tag :image, "Image URL" %>
-    <%= text_field_tag :image %>
+    <%= text_field_tag :image, class = "form-control" %>
   </div>
   <div> 
     <%= submit_tag "Submit New Product" %>
