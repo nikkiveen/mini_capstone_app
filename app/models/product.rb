@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
   def sale_message
-    if price.to_i < 2
+    if price.to_i < 40
       @message = "Clearance Item!"
     else
       @message = "On Sale!"
@@ -8,10 +8,10 @@ class Product < ActiveRecord::Base
   end
 
   def tax
-    @sales_tax = price.to_i * 0.09
+    price * 0.09
   end
 
   def total
-    @sales_tax = price.to_i * 1.09
+    price + tax
   end
 end
