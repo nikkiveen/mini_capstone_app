@@ -14,9 +14,4 @@ class Product < ActiveRecord::Base
   def total
     price + tax
   end
-
-  def random
-    total_product_count = Product.count
-    random_id = rand(total_product_count)
-  end
 end

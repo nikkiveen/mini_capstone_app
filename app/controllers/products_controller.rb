@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     
     sort_by = params[:sort]
     sort_order = params[:sort_order]
-    if sort_by
+    if sort_by && sort_order
       @all_products = Product.order(sort_by => sort_order)
     end
 
@@ -12,7 +12,12 @@ class ProductsController < ApplicationController
     if discount
       @all_products = Product.where("price < ?", 40)
     end
-    
+
+    random = params[:random]
+    if random
+      redirect_to '/products/#{product.random_id}' and return
+    end
+
     render 'index.html.erb'
   end
 
@@ -32,8 +37,13 @@ class ProductsController < ApplicationController
   end
 
   def show
-    product_id = params[:id]
-    @product = Product.find_by(id: product_id)
+    if params[:id] == "random"
+      product = Product.all
+      @product = product.sample
+    else
+      product_id = params[:id]
+      @product = Product.find_by(id: product_id)
+    end
     render 'show.html.erb'
   end
 
