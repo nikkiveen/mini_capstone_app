@@ -4,7 +4,7 @@
   <% @all_products.each do |product| %>
     <div class="col-md-3">
       <div class="products_well">
-        <img src="<%= product.image %>" width=100%>
+        <img src="<%= product.images.first.src %>" width=100%>
         <h1><a href= "/products/<%= product.id %>"><%= product.name %></a></h1>
         <p>Price: <%= number_to_currency(product.price) %></p>
         <p><%= product.sale_message %></p>

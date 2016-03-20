@@ -1,5 +1,8 @@
-<img src="<%= @product.image %>" width=300><br>
+<% @product.images.each do |image| %>
+  <img src="<%= image.src %>" width=300><br>
+<% end %>
 <h1><%= @product.name %></h1>
+<h4>Supplied By: <%= @product.supplier.name %></h4>
 <p><%= @product.description %></p>
 <p>Price: <%= number_to_currency(@product.price) %></p>
 <p>Sales Tax: <%= number_to_currency(@product.tax) %></p>
