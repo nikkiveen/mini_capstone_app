@@ -2,7 +2,7 @@ class Product < ActiveRecord::Base
   belongs_to :supplier
   has_many :images
   belongs_to :user
-  belongs_to :order
+  has_many :order
   
   def sale_message
     if price.to_i < 40
