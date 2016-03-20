@@ -1,0 +1,10 @@
+<h1>Add New Image</h1>
+<%= form_tag "/images/#{@product_id}", method: :post do %>
+  <div class="form-group">
+    <%= label_tag :src, 'Image URL: ' %>
+    <%= text_field_tag :src, "", :class => "form-control" %>
+  </div>
+  <div> 
+    <%= submit_tag "Submit New Product", :class => "btn btn-default" %>
+  </div>
+<% end %>

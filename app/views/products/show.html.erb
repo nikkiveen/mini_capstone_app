@@ -8,4 +8,5 @@
 <p>Sales Tax: <%= number_to_currency(@product.tax) %></p>
 <p>Total: <%= number_to_currency(@product.total) %></p>
 <a href = "/products/<%= @product.id %>/edit">Edit This Product</a><br>
+<a href = "/images/<%= @product.id%>/new">Add Image For This Product</a><br>
 <%= link_to "Delete This Product", "/products/#{@product.id}", method: :delete %>

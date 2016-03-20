@@ -29,9 +29,14 @@ class ProductsController < ApplicationController
     product = Product.create(
       name: params[:name],
       description: params[:description],
-      price: params[:price],
-      image: params[:image]
+      price: params[:price]
     )
+
+    Image.create(
+      src: params[:image],
+      product_id: product.id
+    )
+
     flash[:success] = "Product has been successfully created!"    
     redirect_to "/products/#{product.id}"
   end
