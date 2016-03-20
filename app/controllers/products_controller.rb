@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
 
     random = params[:random]
     if random
-      redirect_to '/products/#{product.random_id}' and return
+      redirect_to '/products/#{product.random_id}'
     end
 
     render 'index.html.erb'
