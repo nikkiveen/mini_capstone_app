@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   ##########################################################
   get '/images/:id/new' => 'images#new'
   post '/images/:id' => 'images#create'
+  ##########################################################
+  post '/orders' => 'orders#create'
 end
