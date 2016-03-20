@@ -1,0 +1,2 @@
+<p>Order ID: <%= params[:id] %></p>
+<p>Quantity: <%= Order.find_by(id: params[:id]).quantity %></p>

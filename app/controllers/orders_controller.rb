@@ -1,10 +1,14 @@
 class OrdersController < ApplicationController
   def create
-    Order.create(
+    order = Order.create(
       quantity: params[:quantity],
-      user_id: current_user
+      user_id: current_user.id
     ) 
-    
-    render 'create.html.erb'
+
+    redirect_to "/orders/#{order.id}"
+  end
+
+  def show
+    render 'show.html.erb'
   end
 end
