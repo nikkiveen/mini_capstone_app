@@ -1,15 +1,17 @@
 <h1>All Available Products</h1>
 <br>
-<div class="row">
-  <% @all_products.each do |product| %>
-    <div class="col-md-3">
-      <div class="products_well">
-        <img src="<%= product.images.first.src %>" width=100%>
-        <h1><a href= "/products/<%= product.id %>"><%= product.name %></a></h1>
-        <p>Price: <%= number_to_currency(product.price) %></p>
-        <p><%= product.sale_message %></p>
-        <p>Description: <%= product.description %></p>
+<% @all_products.each_slice(4) do |product_row| %>
+  <div class="row">
+    <% product_row.each do |product| %>
+      <div class="col-md-3">
+        <div class="products_well">
+          <img src="<%= product.images.first.src %>" width=100%>
+          <h1><a href= "/products/<%= product.id %>"><%= product.name %></a></h1>
+          <p>Price: <%= number_to_currency(product.price) %></p>
+          <p><%= product.sale_message %></p>
+          <p>Description: <%= product.description %></p>
+        </div>
       </div>
-    </div>
-  <% end %>
-</div>
+    <% end %>
+  </div
+<% end %>
