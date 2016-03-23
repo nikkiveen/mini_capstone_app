@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
   def create
-    @product = Product.find_by(id: params[:product_id])
+    product = Product.find_by(id: params[:product_id])
 
-    subtotal = @product.price.to_i * params[:quantity].to_i
-    tax = @product.tax.to_i * params[:quantity].to_i
-    total = @product.total.to_i * params[:quantity].to_i
+    subtotal = product.price.to_i * params[:quantity].to_i
+    tax = product.tax.to_i * params[:quantity].to_i
+    total = product.total.to_i * params[:quantity].to_i
     
     order = Order.create(
       quantity: params[:quantity],
@@ -15,12 +15,12 @@ class OrdersController < ApplicationController
       total: total
     ) 
 
+    flash[:success] = "Order has been successfully placed!"   
     redirect_to "/orders/#{order.id}"
   end
 
   def show
     @order = Order.find_by(id: params[:id])
-    @product = Product.find_by(id: Order.find_by(id: params[:id]).product_id)
     render 'show.html.erb'
   end
 end

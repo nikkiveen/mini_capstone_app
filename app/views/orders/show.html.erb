@@ -2,8 +2,8 @@
 <p><b>Quantity: <%= @order.quantity %></b></p>
 <p>User E-mail: <%= current_user.email %></p>
 <p>Order Created: <%= @order.created_at %></p>
-<p>Product Name: <%= @product.name %></p>
-<p><img src ="<%= @product.images.first.src %>" width=200></p>
+<p>Product Name: <%= @order.product.name %></p>
+<p><img src ="<%= @order.product.images.first.src %>" width=200></p>
 <p>Subtotal: <%= number_to_currency(@order.subtotal) %></p>
 <p>Tax: <%= number_to_currency(@order.tax) %></p>
 <p><b>Total: <%= number_to_currency(@order.total) %></b></p>

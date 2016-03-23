@@ -10,18 +10,18 @@
 <a href = "/products/<%= @product.id %>/edit">Edit This Product</a><br>
 <a href = "/images/<%= @product.id%>/new">Add Image For This Product</a><br>
 <%= link_to "Delete This Product", "/products/#{@product.id}", method: :delete %>
-
-<h4>Buy This Product</h4>
-<%= form_tag "/orders", method: :post do %>
-  <div>
-    <%= label_tag :quantity, "Quantity: " %>
-    <%= text_field_tag :quantity %>
-  </div>
-  <div>
-    <%= label_tag :product_id, "Product ID: " %>
-    <%= text_field_tag :product_id %>
-  </div>
-  <div>
-    <%= submit_tag "Buy Now" %>
-  </div>
-<% end %>
+<div>
+  <h4>Buy This Product</h4>
+  <%= form_tag "/orders", method: :post do %>
+    <div>
+      <%= label_tag :quantity, "Quantity: " %>
+      <%= text_field_tag :quantity %>
+    </div>
+    <div>
+      <%= hidden_field_tag :product_id, @product.id %>
+    </div>
+    <div>
+      <%= submit_tag "Buy Now" %>
+    </div>
+  <% end %>
+</div>
