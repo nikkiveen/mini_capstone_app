@@ -18,6 +18,10 @@ class ProductsController < ApplicationController
       redirect_to '/products/#{product.random_id}'
     end
 
+    if params[:category]
+      @all_products = Category.find_by(name: params[:category]).products
+    end
+
     render 'index.html.erb'
   end
 
