@@ -1,6 +1,13 @@
 <p><b>Order ID: <%= params[:id] %></b></p>
 <p>User E-mail: <%= current_user.email %></p>
 <p>Order Created: <%= @order.created_at %></p>
+<p>Items:</p>
+<ol>
+    <% @order.products.each do |product| %>
+      <li>Product Name: <%= product.name %> | Quantity Ordered: <%= product.carted_products.find_by(order_id: @order.id).quantity %></li>
+    <% end %>
+</ol>
+<br />
 <p>Subtotal: <%= number_to_currency(@order.subtotal) %></p>
 <p>Tax: <%= number_to_currency(@order.tax) %></p>
 <p><b>Total: <%= number_to_currency(@order.total) %></b></p>
