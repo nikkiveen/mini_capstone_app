@@ -22,6 +22,14 @@ class ProductsController < ApplicationController
       @all_products = Category.find_by(name: params[:category]).products
     end
 
+    def run_search
+      search_term = params[:search]
+      @products = Product.where('description LIKE ?', "%" + search_term + "%")
+    end
+
+   render 'index.html.erb'
+ end
+
     render 'index.html.erb'
   end
 

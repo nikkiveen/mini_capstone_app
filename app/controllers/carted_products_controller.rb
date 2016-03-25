@@ -15,6 +15,8 @@ class CartedProductsController < ApplicationController
       status: "Carted"
     )
 
+    @carted_product_count = CartedProduct.where(status: 'Carted').count
+    
     redirect_to '/carted_products'
   end
 
