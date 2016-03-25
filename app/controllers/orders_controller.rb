@@ -6,6 +6,7 @@ class OrdersController < ApplicationController
 
     @carted_products.each do |carted_product|
       subtotal = subtotal + (carted_product.product.price * carted_product.quantity)
+      carted_product.update(status: "Purchased")
     end
     
     tax = subtotal * 0.09
