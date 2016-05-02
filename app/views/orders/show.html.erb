@@ -2,15 +2,57 @@
 <p>User E-mail: <%= current_user.email %></p>
 <p>Order Created: <%= @order.created_at %></p>
 <p>Items:</p>
-<ol>
-    <% @order.products.each do |product| %>
-      <li>Product Name: <%= product.name %> | Quantity Ordered: <%= product.carted_products.find_by(order_id: @order.id).quantity %></li>
-    <% end %>
-</ol>
+
+<div>
+  <table class="table table-inverse">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @order.products.each do |product| %>  
+        <tr>
+          <th scope="row"><%= @number += 1 %></th>
+          <td><%= product.name %></td>
+          <td><%= number_to_currency(product.price) %></td>
+          <td><%= product.carted_products.find_by(order_id: @order.id).quantity %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
 <br />
-<p>Subtotal: <%= number_to_currency(@order.subtotal) %></p>
-<p>Tax: <%= number_to_currency(@order.tax) %></p>
-<p><b>Total: <%= number_to_currency(@order.total) %></b></p>
+<div>
+  <table class="table table-reflow" width=200px>
+    <tbody>
+      <tr>
+        <th scope="row">Subtotal</th>
+        <td><%= number_to_currency(@order.subtotal) %></td>
+      </tr>
+      <tr>
+        <th scope="row">Tax</th>
+        <td><%= number_to_currency(@order.tax) %></td>
+      </tr>
+      <tr>
+        <th scope="row">Total</th>
+        <td><%= number_to_currency(@order.total) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+
+
+<p>Subtotal: </p>
+<p>Tax: </p>
+<p><b>Total: </b></p>
 
 
 

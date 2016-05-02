@@ -1,12 +1,15 @@
 class CartedProductsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @carted_products = CartedProduct.where("user_id = ? AND status = ?", current_user.id.to_i, "Carted")
 
     if CartedProduct.where(status: 'Carted').count == 0
+      flash[:warning] = "You don't have any items in your cart!"  
       redirect_to '/products'
-    end
+    end   
   end
-
+  
   def create
     CartedProduct.create(
       user_id: current_user.id,
@@ -15,8 +18,6 @@ class CartedProductsController < ApplicationController
       status: "Carted"
     )
 
-    @carted_product_count = CartedProduct.where(status: 'Carted').count
-    
     redirect_to '/carted_products'
   end
 
@@ -26,6 +27,7 @@ class CartedProductsController < ApplicationController
     carted_product.update(status: "Removed")
     
     flash[:success] = "Product has been successfully removed from your cart!"  
+
     redirect_to '/carted_products'
   end
 end

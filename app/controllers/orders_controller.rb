@@ -1,11 +1,13 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     @carted_products = CartedProduct.where("user_id = ? AND status = ?", current_user.id.to_i, "Carted")
 
     subtotal = 0
 
     @carted_products.each do |carted_product|
-      subtotal = subtotal + (carted_product.product.price * carted_product.quantity)
+      subtotal += (carted_product.product.price * carted_product.quantity)
     end
     
     tax = subtotal * 0.09
@@ -18,17 +20,15 @@ class OrdersController < ApplicationController
       total: total
     ) 
 
-    @carted_products.each do |carted_product|
-      carted_product.update(status: "Purchased")
-      carted_product.update(order_id: order.id)
-    end
+    @carted_products.update_all(status: "Purchased", order_id: order.id)
 
-    flash[:success] = "Order has been successfully placed!"   
+    flash[:success] = "Order has been successfully placed!"
     redirect_to "/orders/#{order.id}"
   end
 
   def show
     @order = Order.find_by(id: params[:id])
+    @number = 0
     render 'show.html.erb'
   end
 end

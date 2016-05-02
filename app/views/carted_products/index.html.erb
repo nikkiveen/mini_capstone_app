@@ -1,8 +1,25 @@
-<ol>
-  <% @carted_products.each do |carted_product| %>
-    <li><%= carted_product.product.name %> <%= link_to "Remove Product", "/carted_products/#{carted_product.id}", method: :delete %>
-  <% end %>
-</ol>
+  <div>
+  <table class="table table-inverse">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @carted_products.each do |carted_product| %>
+        <tr>
+          <td><%= carted_product.product.name %></td>
+          <td><%= carted_product.quantity %></td>
+          <td><%= number_to_currency(carted_product.product.price * carted_product.quantity) %></td>
+          <td><%= link_to "Remove From Cart", "/carted_products/#{carted_product.id}", method: :delete %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
   <%= form_tag "/orders", method: :post do %>
     <div>
